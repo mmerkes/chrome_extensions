@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Patriotize",
+  "description": "This extension adds a little fun to the browser for political sites.",
+  "version": "0.0.1",
+
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+  "browser_action": {
+    "default_title": "Patriotize this website",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}
