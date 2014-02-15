@@ -1,38 +1,45 @@
-var tags = ['p', 'h1', 'h2', 'h3', 'h4'];
-
 var regex = [
   [ 'patriotism', 'fraudalance'],
   [ 'hero|patriot', 'fraud'],
-  [ 'government', 'my homies'],
-  [ "Rush Limbaugh|Bill O'Reilly|Sean Hannity", 'the Great Satan'],
+  [ 'government|federal', 'uncle Bob'],
+  [ "Rush Limbaugh|Bill O'Reilly|Sean Hannity|Hannity|O'Reilly|Limbaugh", 'the Great Satan'],
   [ 'guns', 'nuclear weapons'],
-  [ 'tax', 'sex'],
-  [ 'security', 'killing Arabs'],
+  [ 'tax', 'helping poor people'],
+  [ 'security', 'arresting Arabs'],
+  [ 'bare arms', 'shoot people'],
   [ 'education', 'helping rich people'],
-  [ 'environment', 'toad prince'],
+  [ 'environment', 'wompadoodle'],
   [ 'healthcare', 'smoking crack'],
-  [ 'gay|homosexual', 'leprechaun'],
   [ 'veteran', 'unicorn'],
   [ 'technology|science', 'black magic'],
-  [ 'God', 'myself']
+  [ 'God', 'myself'],
+  [ 'Palin|Bachmann', 'the Idiot'],
+  [ 'McCain', 'the Old Fart'],
+  [ 'John Boehner|Boehner', 'Captain Crunch'],
+  [ 'Reagan', 'McDonald'],
+  [ 'Scalia', 'Mussolini'],
+  [ 'fiscal hawk', 'cheapskate'],
+  [ 'tea party', 'knitting club'],
+  [ 'business', 'my homies'],
+  [ 'main street', 'red light district'],
+  [ 'leadership', 'bumbling ineptitude'],
+  [ 'earmark', 'pantyhose'],
+  [ 'pension', 'teddy bears'],
+  [ 'waste', 'dookie'],
+  [ 'oil|petroleum|natural gas', 'milk'],
+  [ 'Fox News', 'Citizen Kane'],
+  [ 'conservative', 'flambouyant'],
+  [ 'conservation', 'constapation'],
+  [ 'Republican Party|', 'Pastafarians'],
+  [ 'cuts', 'clam chowder'],
+  [ 'Paul Ryan|Rand Paul', 'Liza Minnelli']
 ]
 
-for( var h = 0; h < tags.length; h++) {
-  var elements = document.querySelectorAll(tags[h]);
-  console.log(tags[h]);
-  for( var i = 0; i < elements.length; i++ ) {
-    for( var r = 0; r < regex.length; r++ ) {
-      changeText( elements[i], regex[r][0], regex[r][1]);
-    }
-  }
+var text = document.body.innerHTML;
+
+for( var r = 0; r < regex.length; r++ ) {
+  var rgx = new RegExp( regex[r][0], 'gi');
+  text = text.replace( rgx, regex[r][1]);
 }
 
-function changeText( element, oldWord, newWord ) {
-  var text = element.innerText,
-      rgx = new RegExp(oldWord, 'gi');
-
-  if( !text )
-    return;
-  text = text.replace(rgx, newWord);
-  element.innerText = text;
-}
+document.body.innerHTML = text;
